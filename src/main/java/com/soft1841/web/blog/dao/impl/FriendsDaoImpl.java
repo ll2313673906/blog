@@ -14,7 +14,7 @@ import java.util.List;
  * Date：         2019/12/5 10:59
  * Description：  好友管理实现类
  */
-public class FriendsImpl  extends JDBCUtil implements FriendsDao {
+public class FriendsDaoImpl extends JDBCUtil implements FriendsDao {
     @Override
     public List<HashMap> getAllFriends() throws Exception {
         List<HashMap> list = new ArrayList<>();

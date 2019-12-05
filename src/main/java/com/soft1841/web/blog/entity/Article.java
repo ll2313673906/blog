@@ -17,6 +17,10 @@ public class Article {
     private Date articleTime;//文章发表的时间
     private String photo;//照片
 
+    public Article(){
+
+    }
+
     public Article(int id, String articleTitle, String articleContent, String click, String comments, Date articleTime, String photo) {
         this.id = id;
         this.articleTitle = articleTitle;
