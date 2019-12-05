@@ -1,18 +1,15 @@
 package com.soft1841.web.blog.controller;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.soft1841.web.blog.entity.User;
-import com.soft1841.web.blog.util.DataSpider;
+import com.soft1841.web.blog.dao.UserDao;
+import com.soft1841.web.blog.factory.DaoFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
+
 
 @WebServlet(name = "UserController",urlPatterns = {"/users"})
 public class UserController extends HttpServlet {
@@ -21,12 +18,24 @@ public class UserController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            Gson gson = new GsonBuilder().create();
-            List<User> userList = DataSpider.getUsers();
-            response.setContentType("application/json;charset=UTF-8");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter out = response.getWriter();
-            out.print(gson.toJson(userList));
-            out.close();
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession hs = request.getSession(true);
+        String qqId= request.getParameter("userName");
+        String userPassword = request.getParameter("userPassword");
+        String flag = request.getParameter("flag");
+        UserDao userDao = DaoFactory.getUserDaoInstance();
+        if (flag.equals("login")){
+            try {
+                if (userDao.login(qqId,userPassword)){
+                    hs.setAttribute("qq_id",qqId);
+                    request.getRequestDispatcher("home.jsp").forward(request,response);
+                }else {
+                    request.getRequestDispatcher("login.jsp").forward(request,response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+      }
     }
