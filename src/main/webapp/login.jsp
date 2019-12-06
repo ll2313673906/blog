@@ -8,6 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <%
+        String b="none";
+        String c="block";
+        String a  = request.getParameter("right");
+        if (a!=null){
+            b=a;
+            c="none";
+    }%>
     <title>Title</title>
     <link rel="stylesheet" href="css.css">
 
@@ -28,9 +36,10 @@
             background-color: #9f9fed;
             text-align: center;
             width: 400px;
-            height: 300px;
+            height: 400px;
             margin-left: 10%;
             margin-top: 6%;
+            display: <%=b%>;
         }
 
 
@@ -73,26 +82,41 @@
             margin-top: 50px;
         }
 
+        th{
+            font-size: 10px;
+        }
+
+        th a{
+            font-size: 5px;
+            
+        }
+
     </style>
 </head>
 <body>
+
 <div class="left">
     <img src="img/blgo.png" alt="图片">
+    <a href="login.jsp?right=block" style="display: <%=c%>">跳转到登录</a>
 </div>
 <div class="right">
     <form action="users?flag=login" method="post">
         <table>
             <tr>
-                <th colspan="2"><h4>账号密码登录</h4></th>
+                   <th><a href="">账号密码登录</a></th>
+
+                   <th><a href="">手机验证登录</a></th>
             </tr>
             <tr>
+                <td>账号：</td>
                 <td colspan="2"><input type="text" name="userName"></td>
             </tr>
             <tr>
+                <td>密码：</td>
                 <td colspan="2"><input type="text" name="userPassword"></td>
             </tr>
             <tr>
-                <td><input type="submit" value="提交"></td>
+                <td><input type="submit" value="登录"></td>
                 <td><input type="reset" value="重置"></td>
             </tr>
         </table>
@@ -106,5 +130,6 @@
 
     </form>
 </div>
+
 </body>
 </html>

@@ -67,4 +67,25 @@ public class UserDaoImpl extends JDBCUtil implements UserDao {
         Connection connection = DbUtil.getConnection();
         String sql = "";
     }
+
+    @Override
+    public User getUserInfoByQqId(String qqId) throws Exception {
+        String sql = "SELECT * FROM t_user WHERE qq_id=?";
+        Connection connection = JDBCUtil.getInitJDBCUtil().getConnection();
+        PreparedStatement psmt = connection.prepareStatement(sql);
+        psmt.setString(1,qqId);
+        ResultSet rs = psmt.executeQuery();
+        User user = new User();
+        while (rs.next()){
+            user.setAvatar(rs.getString("avatar"));
+            user.setUserName(rs.getString("user_name"));
+            user.setQqSignature(rs.getString("qq_signature"));
+        }
+        rs.close();
+        psmt.close();
+        connection.close();
+        return user;
+
+
+    }
 }

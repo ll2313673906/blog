@@ -153,6 +153,9 @@
     </style>
 </head>
 <body>
+<%
+    User user = DaoFactory.getUserDaoInstance().getUserInfoByQqId(String.valueOf(session.getAttribute("qq_id")));
+%>
 
 <%--<%--%>
 <%--    UserDao userDao = DaoFactory.getUserDaoInstance();--%>
@@ -173,23 +176,23 @@
             <li><a href="">装扮</a></li>
         </ul>
         <div class="avatar">
-            <img src="" alt="头像">
+            <img src=<%=user.getAvatar()%> alt="头像">
         </div>
-        <div class="niceName"><h5>帽子一戴，谁也不爱</h5></div>
+        <div class="niceName"><h5><%=user.getUserName()%></h5></div>
     </div>
 
 
     <div class="right">
         <div class="row">
             <div class="col-1">
-                <p><h2>帽子一带谁也不爱的QQ空间</h2></p>
-                <p>雪化了，花开了，时间走了</p>
+                <p><h2><%=user.getUserName()%></h2></p>
+                <p><%=user.getQqSignature()%></p>
             </div>
         </div>
         <div class="row">
-            <div class="col-2"><img src="img/avatar.png" alt="图片"></div>
+            <div class="col-2"><img src=<%=user.getAvatar()%> alt="图片"></div>
             <div class="col-3">
-                <h3>帽子一戴，谁也不爱</h3>
+                <h3><%=user.getUserName()%></h3>
                 <div class="title">
                     <ul>
                         <li><a href="">主页</a></li>

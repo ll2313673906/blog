@@ -2,10 +2,13 @@ package com.soft1841.web.blog.factory;
 
 import com.soft1841.web.blog.dao.ArticleDao;
 import com.soft1841.web.blog.dao.FriendsDao;
+import com.soft1841.web.blog.dao.PhotoDao;
 import com.soft1841.web.blog.dao.UserDao;
 import com.soft1841.web.blog.dao.impl.ArticleDaoImpl;
 import com.soft1841.web.blog.dao.impl.FriendsDaoImpl;
+import com.soft1841.web.blog.dao.impl.PhotoDaoImpl;
 import com.soft1841.web.blog.dao.impl.UserDaoImpl;
+import com.soft1841.web.blog.entity.Photo;
 
 /**
  * FileName       DaoFactory
@@ -22,5 +25,8 @@ public class DaoFactory {
     }
     //说说
     public static ArticleDao getArticleInstance(){return new ArticleDaoImpl();
+    }
+    //照片
+    public static PhotoDao getPhotoInstance(){return new PhotoDaoImpl();
     }
 }

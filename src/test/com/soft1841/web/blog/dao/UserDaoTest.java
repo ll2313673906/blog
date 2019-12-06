@@ -20,4 +20,8 @@ private UserDao userDao = DaoFactory.getUserDaoInstance();
     public void insert() {
     }
 
+    @Test
+    public void getUserInfoByQqId()  throws Exception{
+        System.out.println(userDao.getUserInfoByQqId("2316860587"));
+    }
 }

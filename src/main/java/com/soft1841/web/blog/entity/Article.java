@@ -87,6 +87,7 @@ public class Article {
         this.photo = photo;
     }
 
+
     @Override
     public String toString() {
         return "Article{" +
@@ -98,5 +99,6 @@ public class Article {
                 ", articleTime=" + articleTime +
                 ", photo='" + photo + '\'' +
                 '}';
+
     }
 }

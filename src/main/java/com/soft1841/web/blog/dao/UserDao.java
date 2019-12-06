@@ -2,6 +2,7 @@ package com.soft1841.web.blog.dao;
 
 import com.soft1841.web.blog.entity.User;
 
+import java.util.List;
 
 
 /**
@@ -25,6 +26,14 @@ public interface UserDao {
      * @throws Exception
      */
     void insert (User user) throws Exception;
+
+    /**
+     * 根据qqId查询用户信息，主要用来home.jsp界面的数据
+     * @param qqId
+     * @return
+     * @throws Exception
+     */
+    User getUserInfoByQqId(String qqId) throws Exception;
 
 
 
