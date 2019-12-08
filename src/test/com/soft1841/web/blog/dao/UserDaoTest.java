@@ -16,12 +16,15 @@ private UserDao userDao = DaoFactory.getUserDaoInstance();
         System.out.println(a);
 
     }
-    @Test
-    public void insert() {
-    }
+
 
     @Test
     public void getUserInfoByQqId()  throws Exception{
         System.out.println(userDao.getUserInfoByQqId("2316860587"));
+    }
+
+    @Test
+    public void getUserInfoByPhone() throws Exception{
+        System.out.println(userDao.getUserInfoByPhone("13013947768").getPhone()==null);
     }
 }

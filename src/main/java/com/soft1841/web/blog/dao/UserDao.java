@@ -25,7 +25,7 @@ public interface UserDao {
      * @param user
      * @throws Exception
      */
-    void insert (User user) throws Exception;
+    int insert (User user) throws Exception;
 
     /**
      * 根据qqId查询用户信息，主要用来home.jsp界面的数据
@@ -34,6 +34,14 @@ public interface UserDao {
      * @throws Exception
      */
     User getUserInfoByQqId(String qqId) throws Exception;
+
+    /**
+     * 根据手机号查询用户信息
+     * @param phone
+     * @return
+     * @throws Exception
+     */
+    User getUserInfoByPhone(String phone) throws Exception;
 
 
 

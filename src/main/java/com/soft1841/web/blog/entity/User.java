@@ -23,11 +23,12 @@ public class User {
     private String constellation;
     private String address;
     private String avatar;
+    private String phone;
 
     public User() {
     }
 
-    public User(Long id, String userName, String qqSignature, String qqId, String userPassword, String gender, String userAge, String constellation, String address, String avatar) {
+    public User(Long id, String userName, String qqSignature, String qqId, String userPassword, String gender, String userAge, String constellation, String address, String avatar, String phone) {
         this.id = id;
         this.userName = userName;
         this.qqSignature = qqSignature;
@@ -38,6 +39,7 @@ public class User {
         this.constellation = constellation;
         this.address = address;
         this.avatar = avatar;
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -120,6 +122,14 @@ public class User {
         this.avatar = avatar;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -133,6 +143,7 @@ public class User {
                 ", constellation='" + constellation + '\'' +
                 ", address='" + address + '\'' +
                 ", avatar='" + avatar + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 }

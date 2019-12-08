@@ -2,14 +2,11 @@ package com.soft1841.web.blog.dao.impl;
 
 import com.soft1841.web.blog.dao.UserDao;
 import com.soft1841.web.blog.entity.User;
-import com.soft1841.web.blog.util.DataBaseConnection;
-import com.soft1841.web.blog.util.DbUtil;
 import com.soft1841.web.blog.util.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,36 +33,14 @@ public class UserDaoImpl extends JDBCUtil implements UserDao {
         return flag;
 
     }
-//
-//    @Override
-//    public List<User> selectUser(String qqId) throws Exception {
-//        String sql = "SELECT * FROM t_user WHERE qq_id="+qqId;
-//        PreparedStatement pstmt = null;
-//        DataBaseConnection dbc = null;
-//        dbc = new DataBaseConnection();
-//        pstmt = dbc.getConnection().prepareStatement(sql);
-//        ResultSet rs = pstmt.executeQuery();
-//        List<User> userList = new ArrayList<>();
-//        try {
-//            while (rs.next()) {
-//                User user = new User();
-//                user.setAvatar(rs.getString("avatar"));
-//                userList.add(user);
-//            }
-//            pstmt.close();
-//            rs.close();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }finally {
-//            dbc.close();
-//        }
-//        return userList;
-//    }
+
 
     @Override
-    public void insert(User user) throws Exception {
-        Connection connection = DbUtil.getConnection();
-        String sql = "";
+    public int insert(User user) throws Exception {
+        String sql = "INSERT INTO t_user (qq_id,user_password,user_name,avatar)VALUES (?,?,?,?)";
+        Object[] params = {user.getQqId(),user.getUserPassword(),user.getUserName(),user.getAvatar()};
+        int n = this.executeUpdate(sql,params);
+        return n;
     }
 
     @Override
@@ -87,5 +62,23 @@ public class UserDaoImpl extends JDBCUtil implements UserDao {
         return user;
 
 
+    }
+
+    @Override
+    public User getUserInfoByPhone(String phone) throws Exception {
+        String sql = "SELECT * FROM t_user WHERE phone=?";
+        Connection connection = JDBCUtil.getInitJDBCUtil().getConnection();
+        PreparedStatement psmt = connection.prepareStatement(sql);
+        psmt.setString(1,phone);
+        ResultSet rs = psmt.executeQuery();
+        User user = new User();
+        while (rs.next()){
+            user.setPhone(rs.getString("phone"));
+            user.setQqId(rs.getString("qq_id"));
+        }
+        rs.close();
+        psmt.close();
+        connection.close();
+        return user;
     }
 }

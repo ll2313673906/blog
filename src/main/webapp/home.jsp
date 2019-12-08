@@ -23,30 +23,28 @@
         body{
             margin: 0;
             padding: 0;
-            background-repeat: no-repeat;
-            /*position: relative;*/
-            background-color:rgb(69,94,160);
-
+            background:url("img/211738.png")no-repeat -300px 10px;
         }
         .top{
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
             width: 100%;
-            height: 500px;
-            background-color: blue;
-            background-image: url(img/homebg.jpg);
-            /*position: absolute;*/
+            height: 350px;
+            color: #ffffff;
         }
         .left{
+            margin: 0;
             display: flex;
             width: 100%;
-            height: 80px;
-            background: #000;
+            height: 90px;
             color: white;
-            /*position: absolute;*/
+            opacity:1;
             padding: 0;
             margin: 0;
-
+            background: rgb(68,50,45);
+        }
+        .right{
+           padding-top: 60px;
         }
 
         div{
@@ -60,7 +58,7 @@
 
         .left ul li{
             padding-left: 20px;
-            margin-top: 30px;
+            margin-top: 35px;
 
         }
         ul li {
@@ -75,6 +73,14 @@
         .niceName{
             margin-left: 12px;
             margin-top: 2%;
+            display: flex;
+        }
+        .niceName a{
+          font-size: 10px;
+            margin-left: 20px;
+        }
+        .niceName a:hover{
+            color:#9932CC;
         }
         .col-1{
             width: 100%;
@@ -86,10 +92,12 @@
         }
         .col-2{
             display: flex;
-            flex: 0 0 15%;
+            flex: 0 0 12%;
             margin-top:6%;
             height: 150px;
-
+        }
+        .col-2 img{
+            border-radius: 50%;
         }
         .col-3{
             display: flex;
@@ -107,48 +115,56 @@
             color: white;
         }
         .title{
-            margin-left: -250px;
+            margin-left: -100px;
             margin-top: 70px;
+
         }
         .title ul li{
             padding-left: 60px;
             margin-top: 3%;
+            text-align: center;
 
         }
-        .title ul li a{
-            font-size: 20px;
-            color: black;
-        }
         .avatar {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 5px;
             margin-left: 30%;
             margin-top: 2%;
         }
         .avatar img{
-            border-radius: 10px;
+            border-radius:50%;
         }
-        .right{
-            margin-top: 80px;
-            /*position: absolute;*/
-        }
-    /*    左侧css*/
-        .home-left{
-            width: 300px;
-            height: 700px;
-            background-color: white;
-            float: left;
-            margin-left: 110px;
 
-        }
     /*右侧css*/
         .container{
-            background-color: blue;
-            width: 1000px;
+            width: 80%;
             height: 700px;
-            float: left;
-            margin-left: 0px;
+           margin: 0 auto;
+            opacity: 0.9;
+        }
+        .left li img{
+            width: 200px;
+            height: 100px;
+            margin-top: -39px;
+        }
+        /*切换页面显示*/
+
+        #nav li.active:hover{
+           color: #9932CC;
+        }
+        #content{
+            width: 100%;
+            height: 100%;
+        }
+        #content li{
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        iframe{
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -156,32 +172,20 @@
 <%
     User user = DaoFactory.getUserDaoInstance().getUserInfoByQqId(String.valueOf(session.getAttribute("qq_id")));
 %>
-
-<%--<%--%>
-<%--    UserDao userDao = DaoFactory.getUserDaoInstance();--%>
-<%--    List<User> userList = userDao.selectUser("qq_id");--%>
-<%--    HttpSession hs = request.getSession(true);--%>
-<%--    String qqId =(String) hs.getAttribute("qq_id");--%>
-<%--    int size = userList.size();--%>
-<%--    String avatar = userDao.selectUser("qq_id").get(0).getAvatar();--%>
-<%--%>--%>
-<div class="top">
-    <div class="left">
-        <ul>
-            <li><a href="">QQ空间</a></li>
-            <li><a href="">个人中心</a></li>
-            <li><a href="">我的主页</a></li>
-            <li><a href="">好友</a></li>
-            <li><a href="">游戏</a></li>
-            <li><a href="">装扮</a></li>
-        </ul>
-        <div class="avatar">
-            <img src=<%=user.getAvatar()%> alt="头像">
-        </div>
-        <div class="niceName"><h5><%=user.getUserName()%></h5></div>
+<div class="left">
+    <ul>
+        <li><img src="img/home-top-logo.jpg" alt="qq空间"></li>
+        <li><a href="home.jsp">QQ空间</a></li>
+        <li>游戏</li>
+        <li>装扮</li>
+    </ul>
+    <div class="avatar">
+        <img src=<%=user.getAvatar()%> alt="头像">
     </div>
+    <div class="niceName"><h5><%=user.getUserName()%></h5><a href="accountLogin.jsp">退出登录</a></div>
+</div>
 
-
+<div class="top">
     <div class="right">
         <div class="row">
             <div class="col-1">
@@ -194,21 +198,54 @@
             <div class="col-3">
                 <h3><%=user.getUserName()%></h3>
                 <div class="title">
-                    <ul>
-                        <li><a href="">主页</a></li>
-                        <li><a href="">日志</a></li>
-                        <li><a href="">相册</a></li>
-                        <li><a href="">留言板</a></li>
-                        <li><a href="">说说</a></li>
-                        <li><a href="">个人档</a></li>
+                    <ul id="nav">
+                        <li class="active">主页</li>
+                        <li>好友管理</li>
+                        <li>日志</li>
+                        <li>相册</li>
+                        <li>说说</li>
+                        <li>个人档</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="home-left"></div>
-<div class="container"></div>
+<div class="container">
+    <ul id="content">
+        <li style="display:block">
+            <a href="home.jsp"></a>
+        </li>
+        <li>
+            <iframe src="friends.jsp" frameborder="0"></iframe></li>
+        <li>
+            <iframe src="login.jsp" frameborder="0"></iframe> </li>
+        <li>
+            <iframe src="photo.jsp" frameborder="0"></iframe></li>
+        <li>
+            <iframe src="article.jsp" frameborder="0"></iframe></li>
+        <li>
+            <iframe src="myself.jsp" frameborder="0"></iframe></li>
+    </ul>
+</div>
+<script type="text/javascript">
+    var nav = document.getElementById("nav");
+    var navList = nav.children;
+    var content = document.getElementById("content");
+    var contentList = content.children;
+    for (var i = 0; i < navList.length ; i++) {
+        navList[i].index=i;
+        navList[i].onclick=function () {
+            for (var m =0;m<contentList.length;m++){
+                navList[m].className="";
+                contentList[m].style.display="none";
+            }
+            this.className="active";
+            contentList[this.index].style.display="block";
+        }
+
+    }
+</script>
 
 </body>
 </html>

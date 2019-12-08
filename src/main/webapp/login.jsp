@@ -15,31 +15,44 @@
         if (a!=null){
             b=a;
             c="none";
-    }%>
-    <title>Title</title>
+        }%>
+    <title>登录界面</title>
     <link rel="stylesheet" href="css.css">
 
     <style>
         body{
             display: flex;
-            background-image: url(img/bg.jpg);
-            background-repeat: no-repeat;
+            background:url("img/259471.png") no-repeat 0 1px;
+
         }
+
         .left{
-            width: 200px;
-            height: 100px;
+            width: 290px;
+            height: 140px;
             margin-left: 410px;
             margin-top: 40px;
 
         }
+        .left img{
+            opacity: 309;
+        }
         .right{
-            background-color: #9f9fed;
+            background:linear-gradient(15deg,green,#9f9fed,#eeeeee,greenyellow);
             text-align: center;
             width: 400px;
             height: 400px;
             margin-left: 10%;
             margin-top: 6%;
             display: <%=b%>;
+            border-top-left-radius: 90px;
+            border-bottom-right-radius: 90px;
+            opacity: 0.8;/*给背景添加透明属性*/
+
+
+        }
+        .right:hover{
+            opacity: 10;
+
         }
 
 
@@ -53,21 +66,32 @@
             height: 30px;
             border-radius: 5px;
             border: none;
+
         }
         input[type=submit]{
-            width: 100%;
+            width:80%;
             height: 32px;
         }
+        input[type=submit]:hover{
+            background:linear-gradient(15deg,#9932CC,#9f9fed,#eeeeee,#9932CC);
+        }
         input[type=reset]{
-            width: 100%;
             height: 32px;
+            width: 80%;
+
+        }
+        input[type=reset]:hover{
+            background:linear-gradient(15deg,#9932CC,#9f9fed,#eeeeee,#9932CC);
         }
 
         ul li{
             list-style: none;
-            float: right;
-            padding-right: 20px;
+            float: left;
+            margin-left: 40px;
 
+        }
+        ul li a:hover{
+            color: #9932CC;
         }
         a{
             margin-top: 20px;
@@ -84,36 +108,84 @@
 
         th{
             font-size: 10px;
+            padding-left: 30px;
         }
 
         th a{
             font-size: 5px;
-            
+
+        }
+        .th-2{
+            float: right;
+        }
+        th a:hover{
+            text-decoration:underline;
+            color: #9932CC;
+        }
+        td p{
+            font-size: 6px;
+        }
+        td p a:hover{
+            color: #9932CC;
+        }
+        .left-a{
+            width: 800px;
+            height: 300px;
+            transform: rotate(-20deg);
+            text-align: center;
+            margin-top: 30px;
+        }
+        .left-a a{
+            color: white;
+            font-size: 90px;
+          color:#9f9fed;
         }
 
     </style>
 </head>
 <body>
 
-<div class="left">
+<div class="left" >
     <img src="img/blgo.png" alt="图片">
-    <a href="login.jsp?right=block" style="display: <%=c%>">跳转到登录</a>
+    <div class="left-a"  style="display: <%=c%>">
+    <a href="login.jsp?right=block">  跳转到登录</a>
+    </div>
 </div>
 <div class="right">
     <form action="users?flag=login" method="post">
         <table>
             <tr>
-                   <th><a href="">账号密码登录</a></th>
+                <th><a href="accountLogin.jsp">账号密码登录</a></th>
 
-                   <th><a href="">手机验证登录</a></th>
+                <th class="th-2"><a href="phoneLogin.jsp">手机验证登录</a></th>
             </tr>
             <tr>
-                <td>账号：</td>
-                <td colspan="2"><input type="text" name="userName"></td>
+                <td colspan="2">
+                    <input type="text" name="userName" style="color: #999;"
+                           value="请输入用户名"
+                           onfocus="if(this.value=='请输入用户名') {this.value='';this.style.color='#999' }"
+                           onblur="if(this.value==''){this.value='请输入用户名'; this.style.color='#999'}">
+                </td>
             </tr>
             <tr>
-                <td>密码：</td>
-                <td colspan="2"><input type="text" name="userPassword"></td>
+                <td colspan="2">
+                    <input type="text" name="userPassword" style="color: #999;"
+                           value="请输入密码"
+                           onfocus="if (this.value=='请输入密码'){this.value='';this.style.color='#999'}"
+                           onblur="if (this.value==''){this.value='请输入密码'; this.value.color='#999'}">
+
+                </td>
+                <td><p><a href="">忘记密码?</a></p></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="text" name="code"style="color: #999;"
+                           value="请输入验证码"
+                           onfocus="if (this.value=='请输入验证码'){this.value='';this.style.color='#999'}"
+                           onblur="if (this.value==''){this.value='请输入验证码';this.value.color='#999'}">
+
+                </td>
+                <td> <img src="verifyCode.jsp" alt="验证码" style="width: 80px;height: 25px"></td>
             </tr>
             <tr>
                 <td><input type="submit" value="登录"></td>
@@ -123,13 +195,11 @@
 
         <p>
         <ul>
-            <li><a href="">忘了密码</a></li>
-            <li><a href="">注册新账号</a></li>
+            <li><a href="registered.jsp">注册新账号</a></li>
         </ul>
         </p>
 
     </form>
 </div>
-
 </body>
 </html>

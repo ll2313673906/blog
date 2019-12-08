@@ -28,7 +28,7 @@ public class SMSUtil {
         request.putQueryParameter("RegionId", "cn-hangzhou");
         request.putQueryParameter("PhoneNumbers", mobile);
         request.putQueryParameter("SignName", "大二实训项目");
-        request.putQueryParameter("TemplateCode", "SMS_179286102");
+        request.putQueryParameter("TemplateCode", "SMS_179600451");
         String code = StringUtil.getVerifyCode();
         request.putQueryParameter("TemplateParam", "{\"code\":" + code + "}");
         try {
