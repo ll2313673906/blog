@@ -167,6 +167,19 @@
             height: 100%;
         }
     </style>
+    <script>
+        <%
+        //获取registered.jsp传过来参数为title的值，若title的值等于register,则该jsp弹出注册成功提示框
+        String title = request.getParameter("title");
+        %>
+        <%
+        if (title!=null){
+            if (title.equals("register")){%>
+                alert("已经成功注册");
+        <%}
+    }
+    %>
+    </script>
 </head>
 <body>
 <%

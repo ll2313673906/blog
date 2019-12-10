@@ -37,8 +37,8 @@ public class UserDaoImpl extends JDBCUtil implements UserDao {
 
     @Override
     public int insert(User user) throws Exception {
-        String sql = "INSERT INTO t_user (qq_id,user_password,user_name,avatar)VALUES (?,?,?,?)";
-        Object[] params = {user.getQqId(),user.getUserPassword(),user.getUserName(),user.getAvatar()};
+        String sql = "INSERT INTO t_user (qq_id,user_password,user_name,avatar,phone,gender,constellation)VALUES (?,?,?,?,?,?,?)";
+        Object[] params = {user.getQqId(),user.getUserPassword(),user.getUserName(),user.getAvatar(),user.getPhone(),user.getGender(),user.getConstellation()};
         int n = this.executeUpdate(sql,params);
         return n;
     }

@@ -65,7 +65,7 @@
         }
         .container-bottom{
             width: 100%;
-            height: 400px;
+            height: 600px;
             background: #9932CC;
             margin-top: 30px;
             padding-top: 30px;
@@ -78,8 +78,10 @@
         table{
             margin: 0 auto;
             border-collapse: collapse;
-            height:80%;
         }
+         table tr{
+             height: 50px;
+         }
 
         table tr td{
             text-align: justify-all;
@@ -102,10 +104,39 @@
             float: right;
 
         }
-
+     input{
+         height: 35px;
+     }
 
 
     </style>
+    <script>
+        <%
+        String title = request.getParameter("title");
+        %>
+        <%
+        if (title!=null){
+            if (title.equals("presence")){%>
+                alert("该手机号已经被注册");
+        <%}
+            if (title.equals("isLegal")){%>
+                alert("该手机号不合法");
+        <%}
+}
+
+%>
+        var id = 1;
+
+        function change() {
+            id = id+1;
+            var value = document.getElementById("img").src="img/"+id+".png";
+            document.getElementById("avatar").value = value;
+
+            if (id>5){
+                id = 0;
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="header">
@@ -114,39 +145,37 @@
     </div>
 </div>
 <div class="container">
-        <div class="container-top">
-            <img src="img/zhuceli.png" alt="选择头像" title="点击添加图片">
-        </div>
+
         <div class="container-bottom">
-            <form action="" method="post">
+            <form action="users?flag=register" method="post">
+                <div class="container-top">
+                    <img src="img/1.png" id="img" alt="选择头像" title="点击添加图片" onclick="change()">
+                    <input type="hidden" name="avatar" id="avatar" value=" ">
+                </div>
                 <table>
                     <tr>
                         <td>用户名：</td>
-                        <td><input type="text" name="userName" title="请输入用户名"></td>
+                        <td><input type="text" name="user_name" title="请输入用户名"></td>
                     </tr>
                     <tr>
                         <td>账号：</td>
-                        <td><input type="text" name="qqId" title="请输入你的账号"></td>
+                        <td><input type="text" name="qq_id1" title="请输入你的账号"></td>
                     </tr>
                     <tr>
                         <td>密码：</td>
-                        <td><input type="password" name="userPassword" title="请输入你的密码"></td>
+                        <td><input type="password" name="user_password" title="请输入你的密码"></td>
                     </tr>
                     <tr>
                         <td>手机号：</td>
-                        <td><input type="tel" name="phone" title="请填写11位手机号"></td>
-                        <td><input type="button"value="获取短信验证" title="请确认手机号"></td>
-                    </tr>
-                    <tr><td>验证码：</td>
-                        <td><input type="text" name="code" title="请输入验证码"></td>
+                        <td><input type="tel" name="user_phone" id="phone" title="请填写11位手机号"></td>
                     </tr>
                     <tr>
                         <td>性别：</td>
-                        <td><input type="text"></td>
+                        <td><input type="text" name="gender"></td>
                     </tr>
                     <tr>
                         <td>星座：</td>
-                        <td><input type="text"></td>
+                        <td><input type="text" name="constellation"></td>
                     </tr>
                     <tr>
                         <td></td>

@@ -12,10 +12,18 @@ public class UserDaoImplTest {
     @Test
     public void insert() throws Exception {
         User user = new User();
-        user.setQqId("2313673908");
+        user.setQqId("231652545");
         user.setUserPassword("123");
         user.setUserName("罗丹");
         user.setAvatar("img/rewu1.jpg");
+        user.setConstellation("");
+        user.setPhone("");
+        user.setGender("");
         System.out.println(userDao.insert(user));
+    }
+    @Test
+
+    public void getUserInfoByPhone() throws Exception {
+        System.out.println(userDao.getUserInfoByPhone("18061752267").getPhone()==null);
     }
 }
