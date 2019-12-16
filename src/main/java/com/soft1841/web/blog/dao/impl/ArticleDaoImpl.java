@@ -21,7 +21,10 @@ public class ArticleDaoImpl extends JDBCUtil implements ArticleDao{
     public List<HashMap> getAllArticle() throws Exception {
         //查询所有文章
         List<HashMap> articleList = new ArrayList<>();
-        String sql = "SELECT * FROM t_article";
+        String sql = "SELECT t1.*,t2.user_name,t2.avatar\n" +
+                "FROM t_article t1\n" +
+                "LEFT JOIN t_user t2\n" +
+                "ON t1.`uesr_id`=t2.id";
         articleList = this.executeQuery(sql,null);
         return articleList;
     }

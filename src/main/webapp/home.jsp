@@ -33,18 +33,19 @@
             color: #ffffff;
         }
         .left{
-            margin: 0;
+            margin-left: 0px;
+            margin-top:0;
             display: flex;
             width: 100%;
             height: 90px;
             color: white;
             opacity:1;
-            padding: 0;
-            margin: 0;
+            padding-left:5%;
             background: rgb(68,50,45);
         }
         .right{
-           padding-top: 60px;
+           padding-top:5px;
+
         }
 
         div{
@@ -54,6 +55,7 @@
         }
         .left ul{
             margin-left: 5%;
+            margin-top:20px;
         }
 
         .left ul li{
@@ -86,8 +88,8 @@
             width: 100%;
             height: 100px;
             text-align: left;
-            margin-top: -10px;
-            line-height: 60px;
+            margin-top:18px;
+            line-height: 40px;
 
         }
         .col-2{
@@ -139,9 +141,11 @@
     /*右侧css*/
         .container{
             width: 80%;
-            height: 700px;
-           margin: 0 auto;
+            height: 100%;
+            margin-top: -20px;
+            margin-left: 10%;
             opacity: 0.9;
+            /*background:red;*/
         }
         .left li img{
             width: 200px;
@@ -151,7 +155,7 @@
         /*切换页面显示*/
 
         #nav li.active:hover{
-           color: #9932CC;
+           color:#006666 ;
         }
         #content{
             width: 100%;
@@ -195,7 +199,7 @@
     <div class="avatar">
         <img src=<%=user.getAvatar()%> alt="头像">
     </div>
-    <div class="niceName"><h5><%=user.getUserName()%></h5><a href="accountLogin.jsp">退出登录</a></div>
+    <div class="niceName"><h3><%=user.getUserName()%></h3><a href="accountLogin.jsp">退出登录</a></div>
 </div>
 
 <div class="top">
@@ -211,14 +215,15 @@
             <div class="col-3">
                 <h3><%=user.getUserName()%></h3>
                 <div class="title">
+
                     <ul id="nav">
-                        <li class="active">主页</li>
+                        <li class="active">日志</li>
                         <li>好友管理</li>
-                        <li>日志</li>
-                        <li>相册</li>
+                        <li>相册管理</li>
                         <li>说说</li>
                         <li>个人档</li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -227,12 +232,10 @@
 <div class="container">
     <ul id="content">
         <li style="display:block">
-            <a href="home.jsp"></a>
+            <iframe src="first.jsp" frameborder="0"></iframe>
         </li>
         <li>
-            <iframe src="friends.jsp" frameborder="0"></iframe></li>
-        <li>
-            <iframe src="login.jsp" frameborder="0"></iframe> </li>
+            <iframe src="main.jsp" frameborder="0"></iframe></li>
         <li>
             <iframe src="photo.jsp" frameborder="0"></iframe></li>
         <li>

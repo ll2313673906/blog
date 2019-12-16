@@ -63,4 +63,18 @@ public class PhotoDaoImplTest {
         photo.setImgContent("img/bg.jpg");
         photoDao.updatePhoto(photo);
     }
+
+    @Test
+    public void countPhotoType() throws Exception {
+//        统计类别
+        System.out.println(photoDao.countPhotoType().get(0).get("photo_type_id"));
+    }
+
+    /**
+     * 根据图片的类型查找图片
+     */
+    @Test
+    public void getAllPhotosByType() throws Exception {
+        System.out.println(photoDao.getAllPhotosByType("动物"));
+    }
 }

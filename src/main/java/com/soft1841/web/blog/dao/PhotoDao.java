@@ -58,5 +58,19 @@ public interface PhotoDao {
      */
     int updatePhoto(Photo photo)throws Exception;
 
+    /**
+     * 统计类别数量
+     * @return
+     * @throws Exception
+     */
+    List<HashMap> countPhotoType() throws Exception;
+
+    /**
+     * 根究图片的类型查找图片
+     * @return
+     * @throws Exception
+     */
+   List<HashMap> getAllPhotosByType(String imgType) throws Exception;
+
 
 }

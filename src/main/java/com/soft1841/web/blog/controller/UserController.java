@@ -1,5 +1,7 @@
 package com.soft1841.web.blog.controller;
+import com.soft1841.web.blog.dao.FriendsDao;
 import com.soft1841.web.blog.dao.UserDao;
+import com.soft1841.web.blog.entity.Friends;
 import com.soft1841.web.blog.entity.User;
 import com.soft1841.web.blog.factory.DaoFactory;
 import com.soft1841.web.blog.util.LegalPhone;
@@ -24,6 +26,7 @@ public class UserController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession hs = request.getSession(true);
         UserDao userDao = DaoFactory.getUserDaoInstance();
+        FriendsDao friendsDao = DaoFactory.getFriendsInstance();
         String qqId= request.getParameter("userName");
         String userPassword = request.getParameter("userPassword");
         String flag = request.getParameter("flag");
@@ -34,7 +37,7 @@ public class UserController extends HttpServlet {
             try {
                 if (userDao.login(qqId,userPassword)){
                     hs.setAttribute("qq_id",qqId);
-                    request.getRequestDispatcher("home.jsp").forward(request,response);
+                    request.getRequestDispatcher("bgLunbo.jsp").forward(request,response);
                 }else {
                     request.getRequestDispatcher("login.jsp").forward(request,response);
                 }
@@ -48,7 +51,7 @@ public class UserController extends HttpServlet {
                     if (code.equals(getCode)){
                         hs.setAttribute("phone",phone);
                         hs.setAttribute("qq_id",userDao.getUserInfoByPhone(phone).getQqId());
-                        request.getRequestDispatcher("home.jsp").forward(request,response);
+                        request.getRequestDispatcher("bgLunbo.jsp").forward(request,response);
                     }
                     request.getRequestDispatcher("login.jsp?title=验证码输入错误！请重新输入").forward(request,response);
                 }else {
@@ -79,7 +82,7 @@ public class UserController extends HttpServlet {
                         user.setAvatar(avatar);
                         userDao.insert(user);
                         hs.setAttribute("qq_id",qq_id);
-                        request.getRequestDispatcher("home.jsp?title=register").forward(request,response);
+                        request.getRequestDispatcher("bgLunbo.jsp?title=register").forward(request,response);
                     }else {
                         request.getRequestDispatcher("registered.jsp?title=presence").forward(request,response);
 
@@ -91,6 +94,7 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("registered.jsp?title=isLegal").forward(request,response);
             }
         }
+
 
 
       }

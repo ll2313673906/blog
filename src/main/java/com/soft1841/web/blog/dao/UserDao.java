@@ -2,6 +2,7 @@ package com.soft1841.web.blog.dao;
 
 import com.soft1841.web.blog.entity.User;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -43,6 +44,11 @@ public interface UserDao {
      */
     User getUserInfoByPhone(String phone) throws Exception;
 
-
+    /**
+     * 根据作者的qq
+     * @return
+     * @throws Exception
+     */
+    List<HashMap> getAllArticleByUserQq(String userQqId) throws Exception;
 
 }

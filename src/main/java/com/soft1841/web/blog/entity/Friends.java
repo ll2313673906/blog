@@ -23,7 +23,7 @@ public class Friends {
     private String age;        //年龄
     private String momentum;   //星座
     private String place;       //居住地
-    private Date friendTime;    //添加好友的时间
+    private String friendTime;    //添加好友的时间
     private String content;    //日志的内容
     private Date logTime;     //发表日志的时间
     private String logAddress;  //发表日志的地点
@@ -34,7 +34,7 @@ public class Friends {
 
     }
 
-    public Friends(int id, String nickName, String signature, String qqNumber, int logId, int groupId, String gender, String age, String momentum, String place, Date friendTime, String content, Date logTime, String logAddress, String logAuthor) {
+    public Friends(int id, String nickName, String signature, String qqNumber, int logId, int groupId, String gender, String age, String momentum, String place, String friendTime, String content, Date logTime, String logAddress, String logAuthor) {
         this.id = id;
         this.nickName = nickName;
         this.signature = signature;
@@ -132,11 +132,11 @@ public class Friends {
         this.place = place;
     }
 
-    public Date getFriendTime() {
+    public String getFriendTime() {
         return friendTime;
     }
 
-    public void setFriendTime(Date friendTime) {
+    public void setFriendTime(String friendTime) {
         this.friendTime = friendTime;
     }
 

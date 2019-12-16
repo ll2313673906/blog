@@ -26,4 +26,10 @@ public class UserDaoImplTest {
     public void getUserInfoByPhone() throws Exception {
         System.out.println(userDao.getUserInfoByPhone("18061752267").getPhone()==null);
     }
+
+
+    @Test
+    public void getAllArticleByUserQq() throws Exception {
+        System.out.println(userDao.getAllArticleByUserQq("2313673906"));
+    }
 }

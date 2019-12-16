@@ -54,7 +54,9 @@
             opacity: 10;
 
         }
-
+        th a{
+          font-size: 20px;
+        }
 
         td{
             text-align: center;
@@ -111,10 +113,7 @@
             padding-left: 30px;
         }
 
-        th a{
-            font-size: 5px;
 
-        }
         .th-2{
             float: right;
         }
@@ -137,7 +136,7 @@
         }
         .left-a a{
             color: white;
-            font-size: 90px;
+            font-size: 90px !important;
           color:#9f9fed;
         }
 
@@ -161,18 +160,12 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="text" name="userName" style="color: #999;"
-                           value="请输入用户名"
-                           onfocus="if(this.value=='请输入用户名') {this.value='';this.style.color='#999' }"
-                           onblur="if(this.value==''){this.value='请输入用户名'; this.style.color='#999'}">
+                    <input type="text" name="userName" placeholder="请输入用户名">
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="text" name="userPassword" style="color: #999;"
-                           value="请输入密码"
-                           onfocus="if (this.value=='请输入密码'){this.value='';this.style.color='#999'}"
-                           onblur="if (this.value==''){this.value='请输入密码'; this.value.color='#999'}">
+                    <input type="text" name="userPassword" placeholder="请输入密码">
 
                 </td>
                 <td><p><a href="">忘记密码?</a></p></td>
