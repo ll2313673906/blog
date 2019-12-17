@@ -33,12 +33,11 @@ public interface ArticleDao {
 
     /**
      * 根据文章的id和文章的标题删除文章
-     * @param id
-     * @param articleTitle
+     * @param article
      * @return
      * @throws Exception
      */
-   int deleteArticle(int id,String articleTitle) throws Exception;
+   int deleteArticle(Article article) throws Exception;
 
     /**
      * 文章的修改

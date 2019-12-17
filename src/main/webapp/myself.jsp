@@ -1,5 +1,6 @@
 <%@ page import="com.soft1841.web.blog.dao.UserDao" %>
-<%@ page import="com.soft1841.web.blog.factory.DaoFactory" %><%--
+<%@ page import="com.soft1841.web.blog.factory.DaoFactory" %>
+<%@ page import="com.soft1841.web.blog.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: ASUS
   Date: 2019/12/8
@@ -13,13 +14,13 @@
     <link rel="stylesheet" href="css.css">
     <style>
         body{
-            background: deepskyblue;
             position: relative;
+            background:palegoldenrod;
         }
         .container{
             width: 90%;
             height: 100%;
-            background:palegreen;
+            background:#006666;
             margin: 0 auto;
             display: flex;
             padding-left: 0px;
@@ -40,7 +41,6 @@
         .left{
             width:20%;
             height:600px;
-            background:yellowgreen;
             margin-top:3%;
             padding: 30px 5px;
         }
@@ -66,12 +66,11 @@
         .info{
             width: 100%;
             height: 100%;
-            background:blue;
         }
         .infoTitle{
             width: 100%;
             height: 50px;
-            background:powderblue;
+            background:palegoldenrod;
             margin-top:1%;
         }
         #nav{
@@ -90,7 +89,6 @@
             width: 100%;
             height: 100%;
             display: none;
-            background:red;
         }
         iframe{
             width: 100%;
@@ -112,13 +110,18 @@
 
 </div>
 <div class="container">
-<%--    <%--%>
-<%--        UserDao userDao = DaoFactory.getUserDaoInstance();--%>
-<%--        userDao.getAllArticleByUserQq();--%>
-<%--    %>--%>
+    <%
+        UserDao userDao = DaoFactory.getUserDaoInstance();
+    %>
+    <%
+        HttpSession hs = request.getSession(true);
+        String id = String.valueOf(hs.getAttribute("qq_id"));
+        User user = userDao.getUserInfoByQqId(id);
+
+    %>
   <div class="left">
       <div class="avatar">
-          <img src="img/reb.png" alt="头像">
+          <img src=<%=user.getAvatar()%> alt="头像">
       </div>
   </div>
     <div class="right">

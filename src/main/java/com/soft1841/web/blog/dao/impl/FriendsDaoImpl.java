@@ -40,8 +40,8 @@ public class FriendsDaoImpl extends JDBCUtil implements FriendsDao {
    //修改好友信息
     @Override
     public int updateFriend(Friends friends) throws Exception {
-     String sql = "UPDATE t_friends SET nickName=?, group_id=? WHERE id=?";
-     Object[] param = {friends.getNickName(),friends.getGroupId(),friends.getId()};
+     String sql = "UPDATE t_friends SET nickName=?, group_id=?,place=? WHERE id=?";
+     Object[] param = {friends.getNickName(),friends.getGroupId(),friends.getPlace(),friends.getId()};
     int n  = this.executeUpdate(sql,param);
        return n;
     }

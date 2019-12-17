@@ -49,10 +49,10 @@ public class PhotoDaoImpl  extends JDBCUtil implements PhotoDao {
     }
 
     @Override
-    public int deletePhoto(int id, int imgTypeId, String imgName) throws Exception {
+    public int deletePhoto(Photo photo) throws Exception {
         //根据图片的id，图片的名字，图片的类型，删除图片
         String sql = "DELETE FROM t_photo WHERE img_id=? OR img_type_id=? OR img_name=?";
-        Object[] params = {id,imgTypeId,imgName};
+        Object[] params = {photo.getImgId(),photo.getImgTypeId(),photo.getImgName()};
         int n = this.executeUpdate(sql,params);
         return n;
     }
@@ -78,7 +78,7 @@ public class PhotoDaoImpl  extends JDBCUtil implements PhotoDao {
     @Override
     public List<HashMap> getAllPhotosByType(String imgType) throws Exception {
         //根据图片的类型查找图片
-        String sql="SELECT t1.*,t2.img_name,t2.img_click,t2.img_comments,t2.img_time,t2.img_description,t2.img_content\n" +
+        String sql="SELECT t1.*,t2.img_name,t2.img_id,t2.img_click,t2.img_comments,t2.img_time,t2.img_description,t2.img_content\n" +
                 "FROM t_photo_type t1\n" +
                 "LEFT JOIN t_photo t2\n" +
                 "ON t1.`photo_type_id`=t2.`img_type_id`\n" +

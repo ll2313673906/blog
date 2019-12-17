@@ -46,10 +46,10 @@ public class PhotoDaoImplTest {
 
     @Test
     public void deletePhoto() throws Exception {
-        int id = 9;
-        int imgTypeId = 4;
-        String imgName = "测试";
-        photoDao.deletePhoto(id,imgTypeId,imgName);
+//        int id = 9;
+//        int imgTypeId = 4;
+//        String imgName = "测试";
+//        photoDao.deletePhoto(id,imgTypeId,imgName);
 
     }
 
@@ -75,6 +75,6 @@ public class PhotoDaoImplTest {
      */
     @Test
     public void getAllPhotosByType() throws Exception {
-        System.out.println(photoDao.getAllPhotosByType("动物"));
+        System.out.println(photoDao.getAllPhotosByType("动物").get(0).get("img_id"));
     }
 }

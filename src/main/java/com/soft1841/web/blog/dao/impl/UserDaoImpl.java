@@ -99,11 +99,13 @@ public class UserDaoImpl extends JDBCUtil implements UserDao {
     public List<HashMap> getAllArticleByUserQq(String userQqId) throws Exception {
         //根据用户的qqid获取到用户的所有文章
         String sql = "SELECT t1.*,t2.user_name,t2.address,t2.avatar\n" +
-                "FROM t_article t1\n" +
-                " LEFT JOIN t_user t2\n" +
-                " ON t1.`uesr_id`=t2.qq_id";
+                "FROM t_article t1 \n" +
+                "LEFT JOIN t_user t2\n" +
+                "ON t1.`uesr_id`=t2.qq_id\n" +
+                "WHERE t1.`uesr_id`=?";
+        Object[] params={userQqId};
         List<HashMap> mapList= new ArrayList<>();
-        mapList = this.executeQuery(sql,null);
+        mapList = this.executeQuery(sql,params);
         return mapList;
     }
 

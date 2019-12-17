@@ -1,6 +1,9 @@
 package com.soft1841.web.blog.controller;
+import com.soft1841.web.blog.dao.ArticleDao;
 import com.soft1841.web.blog.dao.FriendsDao;
 import com.soft1841.web.blog.dao.UserDao;
+import com.soft1841.web.blog.dao.impl.ArticleDaoImpl;
+import com.soft1841.web.blog.entity.Article;
 import com.soft1841.web.blog.entity.Friends;
 import com.soft1841.web.blog.entity.User;
 import com.soft1841.web.blog.factory.DaoFactory;
@@ -27,6 +30,7 @@ public class UserController extends HttpServlet {
         HttpSession hs = request.getSession(true);
         UserDao userDao = DaoFactory.getUserDaoInstance();
         FriendsDao friendsDao = DaoFactory.getFriendsInstance();
+        ArticleDao articleDao = DaoFactory.getArticleInstance();
         String qqId= request.getParameter("userName");
         String userPassword = request.getParameter("userPassword");
         String flag = request.getParameter("flag");
@@ -93,6 +97,21 @@ public class UserController extends HttpServlet {
             } else {
                 request.getRequestDispatcher("registered.jsp?title=isLegal").forward(request,response);
             }
+        }
+        if (flag.equals("updateArticles")){
+            String s_id = String.valueOf(hs.getAttribute("id"));
+            int id = Integer.parseInt(s_id);
+            String content = request.getParameter("content");
+            Article article = new Article();
+            article.setId(id);
+            article.setArticleContent(content);
+            int n = articleDao.updateArticle(article);
+            if (n==1){
+                request.getRequestDispatcher("article.jsp?title=success").forward(request,response);
+            }else{
+                request.getRequestDispatcher("editArticle.jsp?title=failure").forward(request,response);
+            }
+
         }
 
 

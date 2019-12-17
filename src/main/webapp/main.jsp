@@ -157,7 +157,8 @@ if (p!=null&&q!=null){
     <div class="left" id="left">
         <%--        /*搜索栏*/--%>
         <div class="search">
-           <a href="main.jsp" target="_parent">放大窗口</a>
+           <a href="main.jsp" target="_parent">
+               放大窗口</a>
             <a href="searchFriends.jsp">查找好友</a>
             <a href="insertFriends.jsp">新增好友</a>
         </div>

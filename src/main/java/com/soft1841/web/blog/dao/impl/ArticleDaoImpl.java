@@ -39,10 +39,10 @@ public class ArticleDaoImpl extends JDBCUtil implements ArticleDao{
     }
 
     @Override
-    public int deleteArticle(int id, String articleTitle) throws Exception {
+    public int deleteArticle(Article article) throws Exception {
         //根据文章的id和文章的标题删除文章
         String sql = "DELETE FROM t_article WHERE id=? OR article_title=?";
-        Object[] params = {id,articleTitle};
+        Object[] params = {article.getId(),article.getArticleTitle()};
         int n = this.executeUpdate(sql,params);
         return n;
     }
@@ -50,8 +50,8 @@ public class ArticleDaoImpl extends JDBCUtil implements ArticleDao{
     @Override
     public int updateArticle(Article article) {
         //文章的修改
-        String sql = "UPDATE t_article SET article_title=? ,article_content=? WHERE id=?";
-        Object[] params = {article.getArticleTitle(),article.getArticleContent(),article.getId()};
+        String sql = "UPDATE t_article SET article_content=? WHERE id=?";
+        Object[] params = {article.getArticleContent(),article.getId()};
         int n = this.executeUpdate(sql,params);
         return n;
     }

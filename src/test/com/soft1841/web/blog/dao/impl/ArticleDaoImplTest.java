@@ -31,10 +31,10 @@ public class ArticleDaoImplTest {
 
     @Test
     public void deleteArticle() throws Exception {
-        //根据文章的id和文章的标题删除文章
-        int id = 8;
-        String articleTitle = "cehsi";
-        articleDao.deleteArticle(id,articleTitle);
+//        //根据文章的id和文章的标题删除文章
+//        int id = 8;
+//        String articleTitle = "cehsi";
+//        articleDao.deleteArticle(id,articleTitle);
     }
 
     @Test

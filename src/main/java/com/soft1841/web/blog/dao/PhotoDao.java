@@ -42,13 +42,11 @@ public interface PhotoDao {
 
     /**
      *根据图片的id ，图片的类型和图片的名字删除图片
-     * @param id
-     * @param imgTypeId
-     * @param imgName
+     * @param photo
      * @return
      * @throws Exception
      */
-    int deletePhoto(int id,int imgTypeId,String imgName) throws Exception;
+    int deletePhoto(Photo photo) throws Exception;
 
     /**
      * 修改图片的名字，图片的描述，图片的类型，以及图片。

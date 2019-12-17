@@ -30,6 +30,7 @@
         .container{
             width: 100%;
             height: 100%;
+            background: blue;
         }
         .top{
             width: 100%;
@@ -43,7 +44,7 @@
         }
         table{
             border-collapse: collapse;
-            width: 90%;
+            width:100%;
         }
         table th{
             height: 40px;
@@ -125,8 +126,6 @@
         String qq = request.getParameter("searchFriendsSearch");
         if (qq==null){
             hs.setAttribute("qq",1);
-
-
         }else {
             hs.setAttribute("qq",qq);
         }
@@ -183,7 +182,6 @@
          <input type="search" placeholder="请输入好友的QQ" name="searchFriendsSearch">
          <input type="submit" value="搜索" name="searchBtn">
      </form>
-     <a href="">修改好友信息</a>
  </div>
     <div class="bottom">
         <table border="1">
@@ -197,6 +195,7 @@
                 <th>星座</th>
                 <th>居住地</th>
                 <th>加好友的时间</th>
+
             </tr>
             <%for(int i = 0; i <list.size(); i++){%>
             <tr>
@@ -212,12 +211,16 @@
                 <td>
                     <input type="button" value="删除好友" onclick="del()">
                 </td>
+                <td>
+                    <a href="updateFriends.jsp?frId=<%=list.get(i).get("id")%>">修改好友</a>
+                </td>
             </tr>
                 <%}%>
 
         </table>
     </div>
 </div>
+
 <script>
     function del() {
         <%
@@ -245,7 +248,7 @@
     }
 </script>
 
-
+</div>
 </body>
 
 </html>

@@ -76,11 +76,15 @@
             margin: 20px;
             display: flex;
             float: left;
+
+        }
+        .avatar img{
+            border-radius: 50%;
         }
         .title{
             width: 100%;
             height: 100px;
-            background:blue;
+            background:#006666;
         }
         .title h2{
             margin-top: 2%;

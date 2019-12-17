@@ -51,6 +51,28 @@ public class FriendsServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
+        if (flag.equals("updateFriends")){
+            String id = String.valueOf(hs.getAttribute("frId"));
+            String nickName = request.getParameter("nickName");
+            String groupId = request.getParameter("select");
+            String place = request.getParameter("place");
+            Friends friends = new Friends();
+            friends.setGroupId(Integer.parseInt(groupId));
+            friends.setPlace(place);
+            friends.setNickName(nickName);
+            friends.setId(Integer.parseInt(id));
+            try {
+                int n = friendsDao.updateFriend(friends);
+                if (n==1){
+                    request.getRequestDispatcher("searchFriends.jsp?title=success").forward(request,response);
+                }else{
+                    request.getRequestDispatcher("updateFriends.jsp?title=failure").forward(request,response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 }

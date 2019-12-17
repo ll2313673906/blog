@@ -64,9 +64,7 @@
             width: 100%;
             height: 90px;
             color: white;
-            opacity:1;
-            background: rgb(68,50,45);
-
+            background: rgba(68,50,45,0.4);
         }
         .right{
             padding-top:5px;
@@ -169,13 +167,14 @@
             height: 100%;
             margin-top: -20px;
             margin-left: 10%;
-            opacity: 0.9;
-            background: #000;
+            background:rgba(4,2,2,0.2);
+
         }
         .left li img{
             width: 200px;
             height: 100px;
             margin-top: -39px;
+
         }
         /*切换页面显示*/
 
@@ -214,6 +213,7 @@
         #next:hover{
             color: #006666;
         }
+
     </style>
 
     <script type="text/javascript">
@@ -321,7 +321,7 @@
             <div class="left">
                 <ul>
                     <li><img src="img/home-top-logo.jpg" alt="qq空间"></li>
-                    <li><a href="home.jsp">QQ空间</a></li>
+                    <li><a href="bgLunbo.jsp">QQ空间</a></li>
                     <li>游戏</li>
                     <li>装扮</li>
                     <li> <button id="prev" style="display: none">上一张</button></li>

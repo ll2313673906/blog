@@ -1,7 +1,8 @@
 <%@ page import="com.soft1841.web.blog.dao.PhotoDao" %>
 <%@ page import="com.soft1841.web.blog.factory.DaoFactory" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.HashMap" %><%--
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.soft1841.web.blog.entity.Photo" %><%--
   Created by IntelliJ IDEA.
   User: ASUS
   Date: 2019/12/8
@@ -35,7 +36,7 @@
         }
         .col-1{
             flex:0 0 23%;
-            height:300px;
+            height:350px;
             background:#006666;
             margin:10px 10px;
             color: #ffffff;
@@ -69,6 +70,14 @@
         }
        .content-div{
            padding:2% 2%;
+       }
+       /*.content-div ul li a{*/
+       /*    font-size: 10px!important;*/
+       /*    float: left;*/
+       /*}*/
+       .content-div input[type=button]{
+           height: 30px;
+           margin-top:2.5%;
        }
         .img-div{
             width: 100%;
@@ -151,6 +160,23 @@
             }
         }
     %>
+    <script>
+        <%
+       /**
+         * 获取自身界面地址为imgId的值
+         */
+        String imgId = request.getParameter("imgId");
+        if (imgId!=null&&!imgId.equals("")){
+            int id = Integer.parseInt(imgId);
+            Photo photo = new Photo();
+            photo.setImgId(id);
+            int n = photoDao.deletePhoto(photo);
+            if (n==1){%>
+            alert("删除成功");
+
+        <%}}%>
+
+    </script>
     <div class="top">
         <a href="photo.jsp" target="_parent" id="big">放大显示</a>
         <form action="photo.jsp" >
@@ -159,7 +185,6 @@
         </form>
 
         <a href="addImg.jsp"><input type="button" value="上传照片"></a>
-        <a href="updateImg.jsp"><input type="button" value="修改图片信息"></a>
 
     </div>
 
@@ -181,11 +206,15 @@
             <div class="col-1">
                 <div class="img-div"><img src=<%=list.get(j).get("img_content")%> alt="图片" title="点击查看大图"></div>
                 <div class="content-div">
-                    <h6><%=list.get(j).get("photo_type")%></h6>
+
+                 <h6><%=list.get(j).get("photo_type")%></h6>
                     <ul>
                         <li>上传时间：<%=list.get(j).get("img_time")%></li>
                         <li>点击次数：<%=list.get(j).get("img_click")%></li>
                     </ul>
+                    <br>
+
+                    <a href="photo.jsp?imgId=<%=list.get(j).get("img_id")%>"><input type="button" value="删除" name="delPhoto"></a>
                 </div>
             </div>
             <%}%>
@@ -202,6 +231,9 @@
                         <li>上传时间：<%=list.get(i).get("img_time")%></li>
                         <li>点击次数：<%=list.get(i).get("img_click")%></li>
                     </ul>
+                    <br>
+                    <a href="photo.jsp?imgId=<%=list.get(i).get("img_id")%>"><input type="button" value="删除" name="delPhoto"></a>
+
                 </div>
             </div>
             <%}%>

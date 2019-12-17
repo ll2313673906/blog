@@ -3,7 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.soft1841.web.blog.entity.User" %>
-<%@ page import="com.soft1841.web.blog.dao.UserDao" %><%--
+<%@ page import="com.soft1841.web.blog.dao.UserDao" %>
+<%@ page import="com.soft1841.web.blog.entity.Article" %><%--
   Created by IntelliJ IDEA.
   User: ASUS
   Date: 2019/12/8
@@ -83,7 +84,7 @@
         }
         a{
             margin-top: 0;
-            margin-left: 5%;
+            margin-left:5%;
             color:#ffffff;;
         }
         p a{
@@ -97,16 +98,29 @@
             text-indent: 2px;
             font-size: 16px!important;
         }
-        input[type=button]:last-child{
-            width:100px;
-            height: 30px;
-            font-size: 14px;
-            margin-left:10px;
-            margin-top:-1%;
+        input[type=button]:first-child{
+            width:80px;
+            margin-top:-4%!important;
         }
-        .right-bottom a{
-            margin-top: -1%;
-            margin-left:35px;
+        input[type=button]:last-child{
+            width:80px;
+            height: 30px;
+            font-size: 15px;
+            margin-left:30px;
+            margin-right: 10px;
+            margin-top:-5%;
+        }
+        .right-bottom a:first-child{
+            margin-top: -3%;
+            margin-left:30px;
+        }
+        .right-bottom a:last-child{
+            font-size: 15px!important;
+            margin-left: 5%;
+        }
+        h5{
+            margin-top: -20px;
+            margin-left: 20%;
         }
 
     </style>
@@ -115,44 +129,62 @@
 <div class="container">
     <%
        UserDao userDao = DaoFactory.getUserDaoInstance();
-       String userQq = request.getParameter("qq_id");
+       HttpSession hs = request.getSession(true);
+       String userQq = String.valueOf(hs.getAttribute("qq_id"));
         List<HashMap> list = userDao.getAllArticleByUserQq(userQq);
+        int size = list.size();
         %>
         <a href="article.jsp" target="_parent">放大显示</a>
-<%--/*定义一个div用来放说说的内容*/--%>
-    <div class="content">
+        <h5>我的说说</h5>
+
+
+    <script>
+        <%String id = request.getParameter("delId");
+        ArticleDao articleDao = DaoFactory.getArticleInstance();
+        if (id!=null&&!id.equals("")){
+            Article article = new Article();
+            article.setId(Integer.parseInt(id));
+            int n = articleDao.deleteArticle(article);
+            if (n==1){
+            %>
+            alert("删除成功");
+        <%
+
+            }
+        }%>
+    </script>
+    <%for (int i=0;i<size;i++){%>
+    <%--/*定义一个div用来放说说的内容*/--%>
+        <div class="content">
             <%-- 定义一个左边div固定头像的高和宽--%>
-        <div class="content-left"><img src="img/avatar.png" alt=""></div>
-<%-- 定义一个右边的div用来展示说说，以及图片--%>
-        <div class="content-right">
-           <div class="right-top">
-               <p>
-                   <a href="">用户名</a>
-                   大家愣住，问这是什么意思，无盐说：抬眼看烽火四周，秦兵不日必出函谷关；
-                   咬牙切齿是提醒大王不要阻断臣子劝谏的途径；挥手是劝说大王去除奸臣，
-                   抚膝是建议大王不要修建奢侈的建筑。不深谋远虑，齐国怎能强大。
-                   林清玄：常想一二，不思八九　　文/林清玄　　1　　朋友买来纸
-                   笔砚台，请我题几个字让他挂在新居的客厅补壁。这使我感到有些为难
-                   ，因为我自知字写得不好看，何况已经有很多年没有写书法了。　
-                   　朋友说：“怕什么？挂你的字我感到很光荣，我都不怕了，你怕什么？”
-               </p>
-           </div>
-            <div class="right-img">
-                <img src="img/article1.jpg" alt="">
+            <div class="content-left"><img src=<%=list.get(i).get("avatar")%> alt=""></div>
+            <%-- 定义一个右边的div用来展示说说，以及图片--%>
+            <div class="content-right">
+                <div class="right-top">
+                    <p>
+                        <a href="">用户名</a>
+                        <%=list.get(i).get("article_content")%>
+                    </p>
+                </div>
+                <div class="right-img">
+                    <img src=<%=list.get(i).get("photo")%> alt="">
+                </div>
+                <div class="right-bottom">
+                    <ul>
+                        <li>时间：<%=list.get(i).get("article_time")%></li>
+                        <li>点击：<%=list.get(i).get("click")%></li>
+                        <li>评论：<%=list.get(i).get("comments")%></li>
+                        <a href="editArticle.jsp?id=<%=list.get(i).get("id")%>"><input type="button" value="编辑"></a>
+                        <a href="article.jsp?delId=<%=list.get(i).get("id")%>"><input type="button" value="删除说说" style="margin-top: -5px;height: 28px"></a>
+                        <a href="insertArticle.jsp">更多</a>
+                    </ul>
+                    <div>
+                    </div>
+                </div>
+
             </div>
-            <div class="right-bottom">
-                <ul>
-                    <li>时间：3029-3-22</li>
-                    <li>点击：23</li>
-                    <li>评论：23</li>
-                    <a href=""><input type="button" value="编辑"></a>
-                   <input type="button" value="删除该条说说">
-                </ul>
-             <div>
         </div>
-    </div>
-
-
-  </div>
+    <%}%>
+</div>
 </body>
 </html>
