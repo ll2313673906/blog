@@ -155,7 +155,7 @@
            String phone = request.getParameter("phone");
            UserDao dao = DaoFactory.getUserDaoInstance();
            if (phone!=null){
-               if (LegalPhone.isMobiPhoneNum(phone)){
+              LegalPhone.isMobiPhoneNum(phone);
                      if (dao.getUserInfoByPhone(phone).getPhone()!=null){
                      String code = SMSUtil.send(phone);
                      HttpSession hs = request.getSession(true);
@@ -164,11 +164,11 @@
          <%}else{%>
         alert("手机号不存在");
         window.self.location='phoneLogin.jsp';
-        <% }
-     } else{%>
         alert("手机号不合法");
         window.self.location='phoneLogin.jsp';
+
         <% }
+
   }
   %>
 

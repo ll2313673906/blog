@@ -30,10 +30,10 @@ public class ArticleDaoImpl extends JDBCUtil implements ArticleDao{
     }
 
     @Override
-    public int insertArticle(String articleTitle, String articleContent, String photo) throws Exception {
+    public int insertArticle(Article article) throws Exception {
         //新增文章
-        String sql = "INSERT INTO t_article(article_title,article_content,photo)VALUES(?,?,?)";
-        Object[] params = {articleTitle,articleContent,photo};
+        String sql = "INSERT INTO t_article(uesr_id,article_content,photo,article_time)VALUES(?,?,?,?)";
+        Object[] params = {article.getUserId(),article.getArticleContent(),article.getPhoto(),article.getArticleTime()};
         int n = this.executeUpdate(sql,params);
         return n;
     }

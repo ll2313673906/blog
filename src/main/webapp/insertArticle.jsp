@@ -94,17 +94,21 @@
         <a href="editArticle.jsp" target="_parent">放大显示</a>
     </div>
     <div class="main-div">
-        <form action="" method="post">
+        <form action="users?flag=insertArticle" method="post">
             <table >
                 <tr>
                     <th colspan="2">编辑说说</th>
                 </tr>
                 <tr>
-                    <td colspan="2"><textarea rows="10" placeholder="编辑内容"></textarea></td>
+                    <td colspan="2"><textarea rows="10" placeholder="编辑内容" id="insertContent" name="insertContent"></textarea></td>
                 </tr>
                 <tr>
                     <td>选择图片</td>
-                    <td><input type="file"></td>
+                    <td><input type="file" name="insertImg"></td>
+                </tr>
+                <tr>
+                    <td>上传时间：</td>
+                    <td><input type="date" name="insertDate"></td>
                 </tr>
                 <tr>
                     <td><input type="hidden" value="获取当前用户的qq_id"></td>

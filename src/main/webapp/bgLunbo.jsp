@@ -313,6 +313,9 @@
     <p id="info" style="display: none"></p>
     <div class="img-div">
         <img src="img/pifu2.png" alt="冰棍" />
+
+
+
         <div class="main-div">
 
             <%
@@ -348,10 +351,10 @@
                             <div class="title">
 
                                 <ul id="nav">
-                                    <li class="active">日志</li>
+                                    <li class="active">空间动态</li>
                                     <li>好友管理</li>
                                     <li>相册管理</li>
-                                    <li>说说</li>
+                                    <li>个人说说</li>
                                     <li>个人档</li>
                                 </ul>
 

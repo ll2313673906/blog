@@ -19,7 +19,6 @@ import java.util.List;
  * Description：  实现类
  */
 public class UserDaoImpl extends JDBCUtil implements UserDao {
-
     @Override
     public boolean login(String qqId, String userPassword) throws Exception {
         // 登录
@@ -33,7 +32,6 @@ public class UserDaoImpl extends JDBCUtil implements UserDao {
             flag = true;
         }
         return flag;
-
     }
 
 

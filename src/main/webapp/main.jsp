@@ -127,25 +127,25 @@
         #nav li{
             margin-top: 1px;
         }
-       li a{
+        li a{
             color: #006666;
         }
     </style>
 </head>
 <body>
 <%
-FriendsDao friendsDao = DaoFactory.getFriendsInstance();
-List<HashMap> list = friendsDao.countGroup();
-HttpSession hs = request.getSession(true);
-String p = request.getParameter("m");
-String q = request.getParameter("j");
-if (p!=null&&q!=null){
-    hs.setAttribute("m1",p);
-    hs.setAttribute("j1",q);
-}else {
-    hs.setAttribute("m1","1");
-    hs.setAttribute("j1","1");
-}
+    FriendsDao friendsDao = DaoFactory.getFriendsInstance();
+    List<HashMap> list = friendsDao.countGroup();
+    HttpSession hs = request.getSession(true);
+    String p = request.getParameter("m");
+    String q = request.getParameter("j");
+    if (p!=null&&q!=null&&!p.equals("")&&!q.equals("")&&!p.equals("null")&&!q.equals("null")){
+        hs.setAttribute("m1",p);
+        hs.setAttribute("j1",q);
+    }else {
+        hs.setAttribute("m1","4");
+        hs.setAttribute("j1","1");
+    }
 
 
 %>
@@ -157,8 +157,8 @@ if (p!=null&&q!=null){
     <div class="left" id="left">
         <%--        /*搜索栏*/--%>
         <div class="search">
-           <a href="main.jsp" target="_parent">
-               放大窗口</a>
+            <a href="main.jsp" target="_parent">
+                放大窗口</a>
             <a href="searchFriends.jsp">查找好友</a>
             <a href="insertFriends.jsp">新增好友</a>
         </div>

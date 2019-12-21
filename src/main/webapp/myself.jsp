@@ -1,6 +1,8 @@
 <%@ page import="com.soft1841.web.blog.dao.UserDao" %>
 <%@ page import="com.soft1841.web.blog.factory.DaoFactory" %>
-<%@ page import="com.soft1841.web.blog.entity.User" %><%--
+<%@ page import="com.soft1841.web.blog.entity.User" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: ASUS
   Date: 2019/12/8
@@ -110,6 +112,7 @@
 
 </div>
 <div class="container">
+
     <%
         UserDao userDao = DaoFactory.getUserDaoInstance();
     %>

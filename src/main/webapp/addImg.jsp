@@ -14,12 +14,11 @@
         .container{
             width: 100%;
             height: 100%;
-            background:yellowgreen;
+            background:url(img/addImgBg.jpg)no-repeat -300px -10px;
         }
         table{
             width: 30%;
             height:400px;
-            border: 1px solid #7b1fa2;
             margin-top: 5%;
         }
         input[type=submit]{
@@ -39,12 +38,18 @@
         }
         table tr td:first-child{
             text-align: right;
+
+        }
+        td {
+            background:palegoldenrod;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <a href="photo.jsp">返回</a>
+    <a href="addImg.jsp" target="_parent">放大显示</a>
     <form action="PhotoServlet?flag=addImg" method="post">
         <table>
             <tr>

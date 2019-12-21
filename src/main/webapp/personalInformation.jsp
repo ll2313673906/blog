@@ -22,7 +22,7 @@
         .container{
             width: 100%;
             height: 100%;
-            background:yellowgreen;
+            background:palegoldenrod;
             padding-top:5%;
 
         }
@@ -33,7 +33,6 @@
         table{
             width: 50%;
             height:400px;
-            border: 1px solid #7b1fa2;
             margin-left: 5%;
         }
         input[type=submit]{
@@ -56,11 +55,12 @@
         }
         .top{
             width: 100%;
-            height:5%;
+            height:10%;
             padding-left: 10%;
-        }
-        p{
-            margin-top:30px ;
+            background:#006666;
+            margin-top: 0;
+            padding-top: 3%;
+            color: #ffffff;
         }
 
     </style>

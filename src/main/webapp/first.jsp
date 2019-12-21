@@ -126,7 +126,7 @@
 
     <div class="top-toolbar">
         <form action="first.jsp">
-            <input type="search" placeholder="请输入作者" id="select" name="select">
+            <input type="search" placeholder="请输入好友" id="select" name="select">
             <input type="submit" value="查找" placeholder="">
 
         </form>

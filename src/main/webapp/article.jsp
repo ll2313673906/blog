@@ -63,7 +63,7 @@
         .right-bottom{
             width: 100%;
             height: 50px;
-            padding-left: 5%;
+            padding-left:3%;
             color: black;
             background:#006666;
             margin-top: 10px;
@@ -71,7 +71,7 @@
         }
         ul{
             display: flex;
-            padding-left:2%;
+            padding-left:1%;
             padding-top:7px;
         }
         ul li{
@@ -106,8 +106,8 @@
             width:80px;
             height: 30px;
             font-size: 15px;
-            margin-left:30px;
-            margin-right: 10px;
+            margin-left:3px;
+            margin-right:2px;
             margin-top:-5%;
         }
         .right-bottom a:first-child{
@@ -116,7 +116,7 @@
         }
         .right-bottom a:last-child{
             font-size: 15px!important;
-            margin-left: 5%;
+            margin-left:2%!important;
         }
         h5{
             margin-top: -20px;
@@ -174,9 +174,9 @@
                         <li>时间：<%=list.get(i).get("article_time")%></li>
                         <li>点击：<%=list.get(i).get("click")%></li>
                         <li>评论：<%=list.get(i).get("comments")%></li>
-                        <a href="editArticle.jsp?id=<%=list.get(i).get("id")%>"><input type="button" value="编辑"></a>
+                        <a href="editArticle.jsp?id=<%=list.get(i).get("id")%>"><input type="button" value="编辑" style="margin-right: 4px"></a>
                         <a href="article.jsp?delId=<%=list.get(i).get("id")%>"><input type="button" value="删除说说" style="margin-top: -5px;height: 28px"></a>
-                        <a href="insertArticle.jsp">更多</a>
+                        <a href="insertArticle.jsp?id=<%=list.get(i).get("id")%>">更多</a>
                     </ul>
                     <div>
                     </div>

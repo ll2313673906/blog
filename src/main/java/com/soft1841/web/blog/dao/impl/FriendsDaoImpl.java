@@ -32,8 +32,11 @@ public class FriendsDaoImpl extends JDBCUtil implements FriendsDao {
     //新增好友
     @Override
     public int insertFriend(Friends friends) throws Exception {
-       String sql = "INSERT INTO t_friends(nickName,signature,qq_number,group_id,momentum,friend_time) VALUES (?,?,?,?,?,?)";
-       Object[] params = {friends.getNickName(),friends.getQqNumber(),friends.getSignature(),friends.getGroupId(),friends.getMomentum(),friends.getFriendTime()};
+       String sql = "INSERT INTO t_friends(nickName,signature,qq_number," +
+               "group_id,momentum,friend_time) VALUES (?,?,?,?,?,?)";
+       Object[] params = {friends.getNickName(),friends.getQqNumber(),
+               friends.getSignature(),friends.getGroupId(),friends.getMomentum(),
+               friends.getFriendTime()};
        int n = this.executeUpdate(sql,params);
         return n;
     }
@@ -41,7 +44,8 @@ public class FriendsDaoImpl extends JDBCUtil implements FriendsDao {
     @Override
     public int updateFriend(Friends friends) throws Exception {
      String sql = "UPDATE t_friends SET nickName=?, group_id=?,place=? WHERE id=?";
-     Object[] param = {friends.getNickName(),friends.getGroupId(),friends.getPlace(),friends.getId()};
+     Object[] param = {friends.getNickName(),friends.getGroupId(),friends.getPlace(),
+             friends.getId()};
     int n  = this.executeUpdate(sql,param);
        return n;
     }

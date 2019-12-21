@@ -114,6 +114,29 @@ public class UserController extends HttpServlet {
 
         }
 
+        //新增说说
+        if (flag.equals("insertArticle")){
+            String insertContent = request.getParameter("insertContent");
+            String insertImg = request.getParameter("insertImg");
+            String insertDate = request.getParameter("insertDate");
+            String userQq = String.valueOf(hs.getAttribute("qq_id"));
+            Article article = new Article();
+            article.setArticleContent(insertContent);
+            article.setPhoto("img/" + insertImg);
+            article.setArticleTime(insertDate);
+            article.setUserId(userQq);
+            try {
+                int n = articleDao.insertArticle(article);
+                if (n==1){
+                    request.getRequestDispatcher("article.jsp?title=success").forward(request,response);
+                }else {
+                    request.getRequestDispatcher("insertArticle.jsp?title=failure").forward(request,response);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
 
 
       }

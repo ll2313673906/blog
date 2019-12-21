@@ -109,11 +109,11 @@
                     <th colspan="2">编辑说说</th>
                 </tr>
                 <tr>
-                    <td colspan="2"><textarea id="content" name="content" rows="10" placeholder="编辑内容"></textarea>
+                    <td colspan="2"><textarea id="content" name="content" rows="50" placeholder="编辑内容"></textarea>
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="修改" "></td>
+                    <td><input type="submit" value="修改"></td>
                     <td><input type="reset"value="取消"></td>
                 </tr>
             </table>

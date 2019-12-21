@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 /**
  * @ClassName LegalPhone
  * @Description TODO
- * @Author yh_chen
  * @Date 2019/12/6
  **/
 public class  LegalPhone {

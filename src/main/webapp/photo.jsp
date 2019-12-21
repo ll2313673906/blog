@@ -70,6 +70,7 @@
         }
        .content-div{
            padding:2% 2%;
+           line-height: 33px;
        }
        /*.content-div ul li a{*/
        /*    font-size: 10px!important;*/
@@ -77,11 +78,11 @@
        /*}*/
        .content-div input[type=button]{
            height: 30px;
-           margin-top:2.5%;
+           margin-top:1%;
        }
         .img-div{
             width: 100%;
-            height:70%;
+            height:65%;
             background:#006666;
         }
         /*点击图片图片放大*/

@@ -23,13 +23,11 @@ public interface ArticleDao {
 
     /**
      * 新增文章
-     * @param articleTitle
-     * @param articleContent
-     * @param photo
+     * @param article
      * @return
      * @throws Exception
      */
-   int insertArticle(String articleTitle,String articleContent,String photo) throws Exception;
+   int insertArticle(Article article) throws Exception;
 
     /**
      * 根据文章的id和文章的标题删除文章

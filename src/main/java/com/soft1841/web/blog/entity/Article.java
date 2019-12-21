@@ -14,14 +14,11 @@ public class Article {
     private String articleContent; //文章的内容
     private String click; //点击的次数
     private String comments; //评论的次数
-    private Date articleTime;//文章发表的时间
+    private String articleTime;//文章发表的时间
     private String photo;//照片
+    private String userId;
 
-    public Article(){
-
-    }
-
-    public Article(int id, String articleTitle, String articleContent, String click, String comments, Date articleTime, String photo) {
+    public Article(int id, String articleTitle, String articleContent, String click, String comments, String articleTime, String photo, String userId) {
         this.id = id;
         this.articleTitle = articleTitle;
         this.articleContent = articleContent;
@@ -29,6 +26,10 @@ public class Article {
         this.comments = comments;
         this.articleTime = articleTime;
         this.photo = photo;
+        this.userId = userId;
+    }
+
+    public Article() {
     }
 
     public int getId() {
@@ -71,11 +72,11 @@ public class Article {
         this.comments = comments;
     }
 
-    public Date getArticleTime() {
+    public String getArticleTime() {
         return articleTime;
     }
 
-    public void setArticleTime(Date articleTime) {
+    public void setArticleTime(String articleTime) {
         this.articleTime = articleTime;
     }
 
@@ -87,6 +88,13 @@ public class Article {
         this.photo = photo;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     @Override
     public String toString() {
@@ -96,9 +104,9 @@ public class Article {
                 ", articleContent='" + articleContent + '\'' +
                 ", click='" + click + '\'' +
                 ", comments='" + comments + '\'' +
-                ", articleTime=" + articleTime +
+                ", articleTime='" + articleTime + '\'' +
                 ", photo='" + photo + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
-
     }
 }

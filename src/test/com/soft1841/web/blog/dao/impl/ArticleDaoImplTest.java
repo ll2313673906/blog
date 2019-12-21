@@ -23,10 +23,15 @@ public class ArticleDaoImplTest {
     @Test
     public void insertArticle() throws Exception {
         //新增文章
-        String articleTitle = "我们";
         String articleContent = "我们不一样不一样";
         String photo = "img/bg.jpg";
-        articleDao.insertArticle(articleTitle,articleContent,photo);
+        String time = "2019-4-23";
+       Article article = new Article();
+       article.setArticleContent(articleContent);
+       article.setPhoto(photo);
+       article.setArticleTime(time);
+       article.setUserId("4");
+       articleDao.insertArticle(article);
     }
 
     @Test

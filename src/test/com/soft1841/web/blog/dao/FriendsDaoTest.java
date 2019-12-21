@@ -21,10 +21,7 @@ public class FriendsDaoTest {
     public void searchFriends() throws Exception {
         Friends friends = new Friends();
         friends.setGroupId(1);
-        List<HashMap> list = friendsDao.searchFriends(friends);
-        for (int i=0;i<list.size();i++){
-            System.out.println(list.get(i).get("avatar"));
-        }
+        System.out.println(friendsDao.insertFriend(friends));
     }
 
     @Test
