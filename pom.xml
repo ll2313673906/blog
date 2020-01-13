@@ -28,6 +28,13 @@
       <version>5.1.48</version>
     </dependency>
 
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- lombok依赖，简化实体类，只需要写属性即可，使用@Data注解-->
     <dependency>
       <groupId>org.projectlombok</groupId>
